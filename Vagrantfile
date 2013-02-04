@@ -57,8 +57,8 @@ Vagrant::Config.run do |config|
     chef.json = {
       :localshop => {
         :secret_key => 'cf9a0125-db3d-48aa-8de4-f49a808a5df2',
-        :repository => 'https://github.com/cwjohnston/localshop.git',
-        :revision => 'requirements.txt'
+        :repository => 'https://github.com/needle/localshop.git',
+        :revision => 'needle'
       }
     }
 
