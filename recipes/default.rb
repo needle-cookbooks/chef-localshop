@@ -69,19 +69,5 @@ application 'localshop' do
     end
     environment(localshop_env)
   end
-
 end
 
-cookbook_file '/usr/local/bin/runinenv' do
-  source 'runinenv.sh'
-  mode 0755
-end
-
-execute "initalize localshop" do
-  cwd node['localshop']['dir']
-  environment({'HOME' => node['localshop']['dir']})
-  command "/usr/local/bin/runinenv #{::File.join(node['localshop']['dir'],'shared','env')} localshop init"
-  creates ::File.join(node['localshop']['dir'],'current','.localshop','localshop.db')
-  action :nothing
-  subscribes :run, "application[localshop]"
-end
