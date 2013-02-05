@@ -54,7 +54,7 @@ application 'localshop' do
   migrate true
   packages []
   symlinks({
-    'packages' => 'source',
+    node['localshop']['storage_dir'] => 'source',
     'localshop.conf.py' => 'localshop.conf.py'
   })
 

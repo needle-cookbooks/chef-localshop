@@ -1,4 +1,5 @@
 default['localshop']['dir'] = '/opt/localshop'
+default['localshop']['storage_dir'] = '/opt/localshop/shared/packages'
 default['localshop']['user'] = 'www-data'
 default['localshop']['group'] = 'www-data'
 default['localshop']['virtualenv'] = '/opt/localshop/env'
