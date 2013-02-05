@@ -18,6 +18,13 @@ package 'git'
 user node['localshop']['user']
 group node['localshop']['group']
 
+localshop_env = {
+  'LOCALSHOP_HOME' => ::File.join(node['localshop']['dir'],'shared')
+}
+
+venv = ::File.join(node['localshop']['dir'],'shared','env')
+venv_python = ::File.join(venv,'bin','python')
+
 %w{ config packages }.each do |dirname|
   directory ::File.join(node['localshop']['dir'],'shared',dirname) do
     owner node['localshop']['user']
@@ -26,13 +33,6 @@ group node['localshop']['group']
     recursive true
     action :create
   end
-end
-
-template ::File.join(node['localshop']['dir'],'shared','config','localshop.conf.py') do
-  source 'localshop.conf.py.erb'
-  owner node['localshop']['user']
-  group node['localshop']['group']
-  mode 0640
 end
 
 application 'localshop' do
@@ -45,16 +45,19 @@ application 'localshop' do
   packages []
   symlinks({
     'packages' => 'source',
-    'config' => '.localshop'
-    })
-  environment({'HOME' => ::File.join(node['localshop']['dir'],'current')})
-  
+    'localshop.conf.py' => 'localshop.conf.py'
+  })
+
   django do
+    local_settings_file 'localshop.conf.py'
+    settings_template 'localshop.conf.py.erb'
+    migration_command "#{venv_python} manage.py syncdb --noinput && #{venv_python} manage.py migrate"
   end
-  
+
   gunicorn do
     app_module :django
-    environment({'HOME' => ::File.join(node['localshop']['dir'],'current')})
+    virtualenv venv
+    environment(localshop_env)
   end
 
   celery do
