@@ -7,6 +7,7 @@ default['localshop']['address'] = '0.0.0.0'
 default['localshop']['port'] = 8080
 default['localshop']['delete_files'] = false
 default['localshop']['distribution_storage'] = 'storages.backends.overwrite.OverwriteStorage'
+default['localshop']['tz'] = 'Etc/UTC'
 default['localshop']['repository'] = 'git://github.com/needle/localshop.git'
 default['localshop']['revision'] = '9a461c7d46db65781ac8b6ec543a4cf20b262a62'
 default['localshop']['secret_key'] = nil
