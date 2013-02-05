@@ -68,6 +68,8 @@ application 'localshop' do
     app_module :django
     virtualenv venv
     environment(localshop_env)
+    host node['localshop']['address']
+    port node['localshop']['port']
   end
 
   celery do

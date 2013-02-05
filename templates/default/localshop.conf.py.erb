@@ -1,1 +1,3 @@
 SECRET_KEY = '<%= node['localshop']['secret_key'] %>'
+LOCALSHOP_DELETE_FILES = <%= node['localshop']['delete_files'] ? 'True' : 'False' %>
+LOCALSHOP_DISTRIBUTION_STORAGE = '<%= node['localshop']['distrbution_storage'] %>'
