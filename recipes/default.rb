@@ -67,6 +67,7 @@ application 'localshop' do
     broker do
       host 'localhost'
     end
+    environment(localshop_env)
   end
 
 end
