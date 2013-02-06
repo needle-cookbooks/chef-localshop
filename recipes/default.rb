@@ -35,16 +35,6 @@ localshop_env = {
 venv = ::File.join(node['localshop']['dir'],'shared','env')
 venv_python = ::File.join(venv,'bin','python')
 
-%w{ config packages }.each do |dirname|
-  directory ::File.join(node['localshop']['dir'],'shared',dirname) do
-    owner node['localshop']['user']
-    group node['localshop']['group']
-    mode 00750
-    recursive true
-    action :create
-  end
-end
-
 application 'localshop' do
   path node['localshop']['dir']
   owner node['localshop']['user']
@@ -52,11 +42,19 @@ application 'localshop' do
   repository node['localshop']['repository']
   revision node['localshop']['revision']
   migrate true
-  packages []
-  symlinks({
-    node['localshop']['storage_dir'] => 'source',
-    'localshop.conf.py' => 'localshop.conf.py'
-  })
+
+  before_restart do
+    directory node['localshop']['storage_dir'] do
+      owner node['localshop']['user']
+      group node['localshop']['group']
+      mode 0750
+    end
+    link ::File.join(node['localshop']['dir'],'current','source') do
+      to node['localshop']['storage_dir']
+      owner node['localshop']['user']
+      group node['localshop']['group']
+    end
+  end
 
   django do
     local_settings_file 'localshop.conf.py'
