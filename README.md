@@ -8,16 +8,34 @@ localshop upstream source is on [github](https://github.com/mvantellingen/locals
 
 This cookbook depends on the Opscode `application_python` cookbook.
 
-As of 0.2.0 this cookbook assumes you are using [Needle's fork of localshop](https://github.com/needle/localshop/commits/needle) which implements some changes not yet merged by the upstream maintainers. This fork contains changes required to make localshop more easily deployable as a Django web application.
+As of this writing, the cookbook assumes you are using Needle's forks of the [application_python](https://github.com/needle-cookbooks/application_python/commits/needle) cookbook and [localshop](https://github.com/needle/localshop/commits/needle), both of which implement some changes not yet merged by the respective upstream maintainers.
+
+The `application_python` fork includes fixes for [COOK-2330](http://tickets.opscode.com/browse/COOK-2330) and [COOK-2337](http://tickets.opscode.com/browse/COOK-2337), and the localshop fork contains changes required to make localshop more easily deployable as a Django web application.
 
 # Usage
 
+Add `localshop::default` to your run list.
+
+The app will create an sqlite3 database for storing data. After installation you will need to manually run the 'createsuperuser' manage command in order to inject administrative credentials into the database.
+
 # Attributes
+
+* localshop.dir - root directory for deploying localshop (defaults to '/opt/localshop')
+* localshop.storage_dir - directory for storing localshop packages (defaults to '/opt/localshop/shared/storage')
+* localshop.user - user to deploy localshop as (defaults to 'nobody')
+* localshop.group - group for ownership permissions (defaults to 'nogroup')
+* localshop.address - ip address to bind to (defaults to 0.0.0.0)
+* localshop.port - port to bind to (int required, defaults to 8080)
+* localshop.delete_files - controls cleanup of files after deleting a package or release (defaults to false)
+* localshop.distribution_storage - dotted import path of Django storage class to be used (defaults to 'storages.backends.overwrite.OverwriteStorage')
+* localshop.tz - timezone to use (defaults to 'Etc/UTC')
+* localshop.repository - git repository to deploy from
+* localshop.revision - git revision to deploy
+* localshop.secret_key - secret key passed to localshop.conf.py (default is randomly generated)
 
 # Recipes
 
 * `default` - installs localshop running under gunicorn and celery
-* `nginx_proxy` - installs localshop as above, proxied by nginx
 
 # Author and License
 
