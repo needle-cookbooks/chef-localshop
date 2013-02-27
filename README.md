@@ -16,7 +16,25 @@ The `application_python` fork includes fixes for [COOK-2330](http://tickets.opsc
 
 Add `localshop::default` to your run list.
 
-The app will create an sqlite3 database for storing data. After installation you will need to manually run the 'createsuperuser' manage command in order to inject administrative credentials into the database.
+The app will create an sqlite3 database for storing data. After installation you will need to manually configure superuser credentials before you can use localshop.
+
+## Creating a superuser
+
+1. Use 'su' to become the localshop user
+
+    ```su - nobody```
+
+2. Activate the python virtualenv
+
+    ```. /opt/localshop/shared/env/bin/activate```
+
+3. Set the LOCALSHOP_HOME environment variable
+
+    ```export LOCALSHOP_HOME="/opt/localshop/shared"```
+
+4. Run the 'createsuperuser' manage command
+
+    ```/opt/localshop/current/manage.py createsuperuser```
 
 # Attributes
 
