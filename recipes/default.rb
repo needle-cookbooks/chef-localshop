@@ -23,6 +23,8 @@ unless node['localshop']['secret_key']
   node.set['localshop']['secret_key'] = SecureRandom.uuid
 end
 
+include_recipe "python"
+
 package 'git'
 
 user node['localshop']['user']
