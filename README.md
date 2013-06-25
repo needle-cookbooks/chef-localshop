@@ -6,11 +6,7 @@ localshop upstream source is on [github](https://github.com/mvantellingen/locals
 
 # Requirements
 
-This cookbook depends on the Opscode `application_python` cookbook.
-
-As of this writing, the cookbook assumes you are using Needle's forks of the [application_python](https://github.com/needle-cookbooks/application_python/commits/needle) cookbook and [localshop](https://github.com/needle/localshop/commits/needle), both of which implement some changes not yet merged by the respective upstream maintainers.
-
-The `application_python` fork includes fixes for [COOK-2330](http://tickets.opscode.com/browse/COOK-2330) and [COOK-2337](http://tickets.opscode.com/browse/COOK-2337), and the localshop fork contains changes required to make localshop more easily deployable as a Django web application.
+This cookbook depends on the Opscode `application_python` cookbook, version 1.1.0 or later.
 
 # Usage
 
