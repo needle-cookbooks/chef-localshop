@@ -6,4 +6,4 @@ description      "Installs/Configures localshop caching pypi server"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.2.3"
 
-depends 'application_python', '>= 1.1.0'
+depends 'application_python', '~> 3.0.0'
