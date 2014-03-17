@@ -37,6 +37,12 @@ localshop_env = {
 venv = ::File.join(node['localshop']['dir'],'shared','env')
 venv_python = ::File.join(venv,'bin','python')
 
+directory venv do
+  owner node['localshop']['user']
+  group node['localshop']['group']
+  recursive true
+end
+
 application 'localshop' do
   path node['localshop']['dir']
   owner node['localshop']['user']
