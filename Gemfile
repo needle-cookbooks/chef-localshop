@@ -1,5 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf'
-gem 'test-kitchen', '~> 1.0.0.alpha', :group => :integration
-gem 'kitchen-vagrant', :group => :integration
+gem 'rake'
+gem 'chefspec', '~> 4.2.0'
+gem 'foodcritic', '~> 4.0.0'
+gem 'rubocop', '~> 0.30.0'
+gem 'rubocop-checkstyle_formatter'
+gem 'fauxhai'
+gem 'berkshelf', '~> 3.2.0'
+gem 'test-kitchen', '~> 1.3.0'
+gem 'kitchen-vagrant'
+gem 'kitchen-docker'
+gem 'thor-scmversion'
+gem 'chef', '= 12.2.1'
