@@ -23,7 +23,8 @@ unless node['localshop']['secret_key']
   node.set['localshop']['secret_key'] = SecureRandom.uuid
 end
 
-include_recipe "python"
+include_recipe 'build-essential'
+include_recipe 'python'
 
 package 'git'
 
@@ -31,11 +32,11 @@ user node['localshop']['user']
 group node['localshop']['group']
 
 localshop_env = {
-  'LOCALSHOP_HOME' => ::File.join(node['localshop']['dir'],'shared')
+  'LOCALSHOP_HOME' => ::File.join(node['localshop']['dir'], 'shared')
 }
 
-venv = ::File.join(node['localshop']['dir'],'shared','env')
-venv_python = ::File.join(venv,'bin','python')
+venv = ::File.join(node['localshop']['dir'], 'shared', 'env')
+venv_python = ::File.join(venv, 'bin', 'python')
 
 directory venv do
   owner node['localshop']['user']
@@ -57,7 +58,7 @@ application 'localshop' do
       group node['localshop']['group']
       mode 0750
     end
-    link ::File.join(node['localshop']['dir'],'current','source') do
+    link ::File.join(node['localshop']['dir'], 'current', 'source') do
       to node['localshop']['storage_dir']
       owner node['localshop']['user']
       group node['localshop']['group']
@@ -88,4 +89,3 @@ application 'localshop' do
     environment(localshop_env)
   end
 end
-

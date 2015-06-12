@@ -4,9 +4,12 @@ This cookbook installs and configures localshop, a pypi server which automatical
 
 localshop upstream source is on [github](https://github.com/mvantellingen/localshop).
 
-# Requirements
+# Cookbook Requirements
 
-This cookbook depends on the Opscode `application_python` cookbook, version 1.1.0 or later.
+* `application_python`
+* `build-essential`
+* `nginx`
+* `python`
 
 # Usage
 
@@ -50,6 +53,7 @@ The app will create an sqlite3 database for storing data. After installation you
 # Recipes
 
 * `default` - installs localshop running under gunicorn and celery
+* `nginx_proxy` - installs an nginx proxy for localshop
 
 # Author and License
 
