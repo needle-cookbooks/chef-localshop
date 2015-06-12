@@ -18,8 +18,8 @@ Vagrant::Config.run do |config|
 
   config.vm.host_name = "localshop-berkshelf"
 
-  config.vm.box = "opscode-ubuntu-12.04"
-  config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box"
+  config.vm.box = "opscode-ubuntu-14.04"
+  config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-14.04.box"
 
   unless ENV['VAGRANT_DISABLE_CACHE']
     FileUtils.mkdir_p(File.join("apt","partial")) unless Dir.exists?(File.join("apt", "partial"))

@@ -1,0 +1,25 @@
+AllCops:
+  Include:
+    - '**/Berksfile'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/Thorfile'
+    - '**/Guardfile'
+  Exclude:
+    - 'vendor/**'
+    - '**/metadata.rb'
+
+Metrics/ClassLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+Style/FileName:
+  Enabled: false
+Style/MultilineOperationIndentation:
+  Enabled: false
+Style/NumericLiterals:
+  Enabled: false
+Style/SpaceAroundEqualsInParameterDefault:
+  Enabled: false
