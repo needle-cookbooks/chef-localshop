@@ -1,7 +1,7 @@
 # Chef-Localshop
 
 ### Warning
-Currently the application_python cummonity cookbook does not work on Chef 12. If you are using Chef 12 please see this issue for a work around until the upstream cookbook is patched.
+Currently the application_python community cookbook does not work on Chef 12. If you are using Chef 12 please see this issue for a work around until the upstream cookbook is patched.
 https://github.com/needle-cookbooks/chef-localshop/issues/10
 
 # Description
