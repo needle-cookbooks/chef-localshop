@@ -1,3 +1,9 @@
+# Chef-Localshop
+
+### Warning
+Currently the application_python cummonity cookbook does not work on Chef 12. If you are using Chef 12 please see this issue for a work around until the upstream cookbook is patched.
+https://github.com/needle-cookbooks/chef-localshop/issues/10
+
 # Description
 
 This cookbook installs and configures localshop, a pypi server which automatically mirrors and proxies pypi packages and supports the local uploading of private packages.
