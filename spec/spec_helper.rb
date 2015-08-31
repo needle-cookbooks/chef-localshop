@@ -1,7 +1,8 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
+require_relative 'support/matchers'
 
-ChefSpec::Coverage.start!
+ChefSpec::Coverage.start! unless ENV['CI'] == 'travisci'
 
 RSpec.configure do |config|
   config.log_level = :error
